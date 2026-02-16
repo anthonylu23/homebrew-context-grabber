@@ -11,13 +11,13 @@ cask "context-grabber" do
 
   pkg "context-grabber-macos-#{version}.pkg"
 
-  uninstall delete:  [
-              "/Applications/ContextGrabber.app",
-              "/usr/local/bin/cgrab",
-            ],
-            pkgutil: [
+  uninstall pkgutil: [
               "com.contextgrabber.app",
               "com.contextgrabber.cli",
+            ],
+            delete:  [
+              "/Applications/ContextGrabber.app",
+              "/usr/local/bin/cgrab",
             ]
 
   zap trash: [
