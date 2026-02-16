@@ -4,24 +4,24 @@ cask "context-grabber" do
 
   url "https://github.com/anthonylu23/context_grabber/releases/download/v#{version}/context-grabber-macos-#{version}.pkg"
   name "Context Grabber"
-  desc "Local-first macOS menu bar app for capturing browser tabs and desktop apps into structured markdown"
+  desc "Capture browser tabs and desktop apps into structured markdown for LLM workflows"
   homepage "https://github.com/anthonylu23/context_grabber"
 
   depends_on macos: ">= :sonoma"
 
   pkg "context-grabber-macos-#{version}.pkg"
 
-  uninstall pkgutil: [
-              "com.contextgrabber.app",
-              "com.contextgrabber.cli",
-            ],
-            delete: [
+  uninstall delete:  [
               "/Applications/ContextGrabber.app",
               "/usr/local/bin/cgrab",
+            ],
+            pkgutil: [
+              "com.contextgrabber.app",
+              "com.contextgrabber.cli",
             ]
 
   zap trash: [
-    "~/contextgrabber",
     "~/.contextgrabber",
+    "~/contextgrabber",
   ]
 end
